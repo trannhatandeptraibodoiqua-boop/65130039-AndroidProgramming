@@ -27,10 +27,10 @@ public class ActivityChuyenTien extends AppCompatActivity {
     //Đây là bộ lắng nghe và xử lý sự kiện click lên nút Tính Tổng
     public void XuLyChuyenTien(View view){
         // Tìm tham chiếu đến điều khiển trên tập XML
-        EditText editTextChieuCao = findViewById(R.id.edtVNĐ);
-        EditText editTextKQ = findViewById(R.id.edtDola);
+        EditText editTextVNĐ = findViewById(R.id.edtVNĐ);
+        EditText editTextDola = findViewById(R.id.edtDola);
         //Lấy dữ liệu về ở điều khiển số a
-        String strA = editTextChieuCao.getText().toString();
+        String strA = editTextVNĐ.getText().toString();
         //Lấy dữ liệu về ở điều khiển số b
         //Chuyển dữ liệu sang số
         double soA = Double.parseDouble(strA);
@@ -38,7 +38,7 @@ public class ActivityChuyenTien extends AppCompatActivity {
         double kq = soA / 26337;
         String strDola = String.valueOf(kq);
         //Xuất kết quả ra màn hình
-        editTextKQ.setText(strDola);
+        editTextDola.setText(strDola);
     }
     public void QuayVe (View v) {
         //tao doi tuong intent

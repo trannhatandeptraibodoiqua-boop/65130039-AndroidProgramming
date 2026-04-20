@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ThiGK2">
         <activity
+            android:name=".ActivityGioiThieu"
+            android:exported="false" />
+        <activity
             android:name=".ActivityChuyenTien"
             android:exported="false" />
         <activity

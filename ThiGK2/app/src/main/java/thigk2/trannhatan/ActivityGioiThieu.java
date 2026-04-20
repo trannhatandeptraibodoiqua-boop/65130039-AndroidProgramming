@@ -10,35 +10,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityGioiThieu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_gioi_thieu);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-
-    // Hàm đáp ứng sự kiện nấn lên nút "Sang màn hình khác"
-    // Xử lý chuyển màn hình
-    public void ChuyenSoTien (View v) {
-        //Tạo một đối tượng Intent
+    public void QuayVe (View v) {
+        //tao doi tuong intent
         //Tham số thứ 2 của ham tạo này, là tên Activity ( màn hình ) ta muốn chuyển sang
-        Intent iManHinhKhac = new Intent(this, ActivityChuyenTien.class);
+        Intent iManHinhCHINH = new Intent(this, MainActivity.class);
         //Thuc hien chuyen
-        startActivity(iManHinhKhac);
-    }
-
-    public void ChuyenGioiThieu (View v) {
-        //Tạo một đối tượng Intent
-        //Tham số thứ 2 của ham tạo này, là tên Activity ( màn hình ) ta muốn chuyển sang
-        Intent iManHinhKhac = new Intent(this, ActivityGioiThieu.class);
-        //Thuc hien chuyen
-        startActivity(iManHinhKhac);
+        startActivity(iManHinhCHINH);
     }
 }
