@@ -7,13 +7,73 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/backgroundmain" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/backgroundmain" />
+
+    <Button
+        android:id="@+id/btnBMI"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:onClick="ChuyenSoTien"
+        android:text="Chuyển đổi tỉ giá"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btnMonAn"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="70dp"
+        android:onClick="ChuyenMonAn"
+        android:text="Món ăn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/btnBMI" />
+
+    <Button
+        android:id="@+id/btnBaiThuoc"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="70dp"
+        android:onClick="ChuyenBaiThuoc"
+        android:text="Bài thuốc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/btnMonAn" />
+
+    <Button
+        android:id="@+id/btnGioiThieu"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="70dp"
+        android:onClick="ChuyenGioiThieu"
+        android:text="Giới thiệu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/btnBaiThuoc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
