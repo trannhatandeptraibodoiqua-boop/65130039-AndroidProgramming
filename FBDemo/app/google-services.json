@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "747839908431",
+    "project_id": "vidu-29963",
+    "storage_bucket": "vidu-29963.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747839908431:android:2929cae26f2e8331a5183a",
+        "android_client_info": {
+          "package_name": "tna.cntt2.fbdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJNA3oHtG09grS0CVzUqXuc1NzfzxtUIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
