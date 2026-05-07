@@ -1,7 +1,9 @@
 package tna.cntt2.vieccanlam;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -73,4 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    //Hàm đáp ứng sự kiện nhấn lên nút "Sang màn hình khác"
+    //Xử lý chuyển màn hình
+    public void ChuyenManHinh(View v){
+        //Tạo 1 đối tượng Intent
+        //Tham số thứ 2 của hàm tạo này, là tên Activity(màn hình) ta muốn chuyển sang
+        Intent iManHinhKhac = new Intent(this, ThemTaskActivity.class);
+        //Thực hiện chuyển
+        startActivity(iManHinhKhac);
+    }
 }
