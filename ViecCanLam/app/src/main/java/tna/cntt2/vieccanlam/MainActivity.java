@@ -2,6 +2,7 @@ package tna.cntt2.vieccanlam;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -9,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +25,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     List<TASKS> lstVCL;
+    TaskRVadapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,22 +37,17 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference databaseReference = database.getReference("TASKS");
         //Lắng nghe và xử lý
         lstVCL = new ArrayList<TASKS>();
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Lấy dữ liệu từ biến snapshot, đưa vào 1 biến danh sách để xử lý
-                for(DataSnapshot obj : snapshot.getChildren()) {
-                    TASKS task = obj.getValue(TASKS.class);
-                    lstVCL.add(task);
-                    Log.w("VCL app", "Tên viêc cần làm : " + task.getName());
-                }
-            }
+        databaseReference.addValueEventListener(ngheFB);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        //Tìm điều khiển
+        RecyclerView recyclerView = findViewById(R.id.rcvVCL);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-            }
-        });
+        adapter = new TaskRVadapter(lstVCL);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -55,4 +55,22 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+    ValueEventListener ngheFB = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            lstVCL.clear();
+            //Lấy dữ liệu từ biến snapshot, đưa vào 1 biến danh sách để xử lý
+            for(DataSnapshot obj : snapshot.getChildren()) {
+                TASKS task = obj.getValue(TASKS.class);
+                lstVCL.add(task);
+                //Log.w("VCL app", "Tên viêc cần làm : " + task.getName());
+            }
+            adapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    };
 }
